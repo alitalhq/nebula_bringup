@@ -13,13 +13,13 @@ def generate_launch_description():
     - Profil tabanlı kamera konfigürasyonu (profiles_file + profile)
     - İsteğe bağlı simülasyon (use_simulation)
     """
-    hss_vision_pkg = get_package_share_directory('hss_vision')
+    nebula_vision_pkg = get_package_share_directory('nebula_vision')
     #nebula_simulation_pkg = get_package_share_directory('nebula_simulation')
 
     # --- Launch Argümanları (profil tabanlı) ---
     profiles_file_arg = DeclareLaunchArgument(
         'profiles_file',
-        default_value=os.path.join(hss_vision_pkg, 'config', 'camera_profiles.yaml'),
+        default_value=os.path.join(nebula_vision_pkg, 'config', 'camera_profiles.yaml'),
         description="Kamera profilleri YAML dosyasının yolu."
     )
 
@@ -37,10 +37,10 @@ def generate_launch_description():
     """
 
     # --- Dahil Edilen Launch Dosyaları ---
-    # hss_vision/launch/camera_driver.launch.py, 'profiles_file' ve 'profile' argümanlarını bekliyor
+    # nebula_vision/launch/camera_driver.launch.py, 'profiles_file' ve 'profile' argümanlarını bekliyor
     camera_driver_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(hss_vision_pkg, 'launch', 'camera_driver.launch.py')
+            os.path.join(nebula_vision_pkg, 'launch', 'camera_driver.launch.py')
         ),
         launch_arguments={
             'profiles_file': LaunchConfiguration('profiles_file'),
