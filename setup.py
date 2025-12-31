@@ -1,4 +1,6 @@
 from setuptools import find_packages, setup
+import os
+from glob import glob
 
 package_name = 'nebula_bringup'
 
@@ -9,8 +11,8 @@ setup(
     data_files=[
         ('share/ament_index/resource_index/packages', [f'resource/{package_name}']),
         (f'share/{package_name}', ['package.xml']),
-        (f'share/{package_name}/launch', files_if_exist('launch/*.launch.py') + files_if_exist('launch/*.py')),
-        (f'share/{package_name}/config', files_if_exist('config/*')),
+        (os.path.join('share', package_name, 'launch'), glob('launch/*.launch.py')),
+        (os.path.join('share', package_name, 'config'), glob('config/*')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -18,3 +20,9 @@ setup(
     maintainer_email='alitqlhq@gmail.com',
     description='Bringup for Nebula UAV',
     license='MIT',
+    tests_require=['pytest'],
+    entry_points={
+        'console_scripts': [
+        ],
+    },
+)

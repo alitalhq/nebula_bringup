@@ -14,7 +14,9 @@
   <exec_depend>ament_index_python</exec_depend>
 
   <exec_depend>nebula_vision</exec_depend>
-  
+  <exec_depend>nebula_control</exec_depend>
+  <exec_depend>nebula_test</exec_depend>
+
   <exec_depend>nebula_interfaces</exec_depend>
   
   <test_depend>ament_copyright</test_depend>
