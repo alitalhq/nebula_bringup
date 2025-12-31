@@ -62,7 +62,10 @@ def generate_launch_description():
         package='nebula_control',
         executable='operation_manager_node',
         name='operation_manager',
-        output='screen'
+        output='screen',
+        parameters=[
+            PathJoinSubstitution([control_share, 'config', 'operation_params.yaml'])
+        ]
     )
 
 
